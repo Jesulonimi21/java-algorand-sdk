@@ -63,7 +63,7 @@ public class Account {
     // randomSrc can be null, in which case system default is used
     private Account(SecureRandom randomSrc) throws NoSuchAlgorithmException {
         CryptoProvider.setupIfNeeded();
-        KeyPairGenerator gen = KeyPairGenerator.getInstance(KEY_ALGO);
+        KeyPairGenerator gen = KeyPairGenerator.getInstance(KEY_ALGO,new BouncyCastleProvider());
         if (randomSrc != null) {
             gen.initialize(SK_SIZE_BITS, randomSrc);
         }
